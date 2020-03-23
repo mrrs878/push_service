@@ -35,12 +35,12 @@ router.post('/sub', async ctx => {
   const { endpoint, expirationTime, keys } = ctx.request.body
   const body = { endpoint, expirationTime, ...keys }
   const headers = { Authorization: ctx.request.headers.authorization }
-  const res = await fetch({ url: 'http://localhost:9090/sw/sub', method: 'POST', json: true, body, headers })
+  const res = await fetch({ url: 'https://api.p18c.top/sw/sub', method: 'POST', json: true, body, headers })
   ctx.body = res
 });
 router.post('/push', async ctx => {
   const headers = { Authorization: ctx.request.headers.authorization }
-  const res = await fetch({ url: 'http://localhost:9090/sw/push', method: 'POST', json: true, body: ctx.request.body, headers })
+  const res = await fetch({ url: 'https://api.p18c.top/sw/push', method: 'POST', json: true, body: ctx.request.body, headers })
   if (res.code !== 0) {
     ctx.body = res
     return
